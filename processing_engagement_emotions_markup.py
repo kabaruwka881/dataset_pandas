@@ -19,9 +19,6 @@ def pre_processing(df):
             print(f'[ГОТОВО] Столбцы переименованы из {filename}_columns')
     return df
 
-def get_short_user_description(emotion_markup):
-    char = emotion_markup.split(' ')
-    return df
 
 print('Обработка файлов участников их игрового опыта для эксперимента [game_preferences_form]\nВведите название файла (без формата):')
 filename = input()
