@@ -28,9 +28,21 @@ def pre_processing_post_experiment(df, filename, path):
     else:
         print(f'[ИНФОРМАЦИЯ] JSON-файл json/post_experiment/{filename}_columns.json содержит данные. Загрузка столбцов...')
         with open(f'json/post_experiment/{filename}_columns.json', 'r', encoding='utf-8') as file:
-            column_mapping = json.load(file)
-            df.rename(columns=column_mapping, inplace=True)
-            print(f'[ГОТОВО] Столбцы переименованы из {filename}_columns')
+            content = json.load(file)
+            old_columns = set(df.columns)
+            df.rename(columns=content, inplace=True)
+            new_columns = set(df.columns)
+            unchanged_columns = new_columns & old_columns
+            if unchanged_columns:
+                for col in unchanged_columns:
+                    prompt = get_prompt('common_functions')[0]
+                    deleted_column = get_chat_answer_llama(prompt + str(col))
+                    print(f'[ИНФОРМАЦИЯ] Ответ на колонку из таблицы был удален. Новый ответ: {deleted_column} для {col}')
+                    content[col] = deleted_column
+                df.rename(columns=content, inplace=True)
+                with open(f'json/post_experiment/{filename}_columns.json', 'w', encoding='utf-8') as file:
+                    json.dump(content, file, ensure_ascii=False, indent=4)
+        print(f'[ГОТОВО] Столбцы переименованы из {filename}_columns')
 
     columns = df.iloc[:, 41:45].columns
     for i, column in enumerate(columns):
@@ -47,6 +59,14 @@ def pre_processing_post_experiment(df, filename, path):
                         text = str(row[column])
                         if text in content:
                             df.at[index, column] = content[text]
+                        else:
+                            prompt = get_prompt('post_experiment')[0]
+                            deleted_answer = get_chat_answer_llama(prompt + text)
+                            content[text] = deleted_answer
+                            df.at[index, column] = deleted_answer
+                            print(f'[ИНФОРМАЦИЯ] Ответ на ячейку из таблицы был удален. Новый ответ: {deleted_answer}')
+                    with open(f'json/post_experiment/{filename}_{column}.json', 'w', encoding='utf-8') as file:
+                        json.dump(content, file, ensure_ascii=False, indent=4)
                     print(f'[ГОТОВО] Ответ: ячейки с мнениями участников переименованы из {filename}')
     return df
 
