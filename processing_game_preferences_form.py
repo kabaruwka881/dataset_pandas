@@ -6,6 +6,7 @@ import json, sys, os
 def pre_processing_game_preferences(df, filename, path):
     df = df.astype(str).fillna('Нет информации')
     df = fix_data(df)
+    df = fix_gender(df)
     for column in df.columns:
         df[column] = df[column].apply(approximate_assessment)
     if not os.path.exists(f'json/game_preferences/{filename}_columns.json') or os.path.getsize(f'json/game_preferences/{filename}_columns.json') == 0:

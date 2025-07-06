@@ -22,11 +22,20 @@ def to_make_columns(df, path):
        json.dump(new_columns, file, ensure_ascii=False, indent=4)
     return df
 
+def gender_processing(date_obj):
+    return 'Мужской' if date_obj == 'm' else 'Женский'
+
 def fix_data(df):
     column = df.columns[1]
     if column in df.columns:
         df[column] = pd.to_datetime(df[column], errors='coerce')
         df[column] = df[column].apply(date_processing)
+    return df
+
+def fix_gender(df):
+    column = df.columns[2]
+    if column in df.columns:
+        df[column] = df[column].apply(gender_processing)
     return df
 
 def date_processing(date_obj):
