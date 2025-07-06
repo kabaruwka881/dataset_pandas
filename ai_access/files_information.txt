@@ -1,3 +1,0 @@
-game_preferences_form_1.xlsx
-post_experiment_state_form_2.xlsx
-pre_experiment_state_form_2.xlsx
