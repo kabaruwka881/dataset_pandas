@@ -2,7 +2,6 @@ import os, os.path, sys
 from common_func import *
 from new_api import get_chat_answer_llama
 
-
 def get_short_user_description(df, column, filename):
     new_answers = {}
     prompt = get_prompt('post_experiment')[0]
@@ -17,12 +16,28 @@ def get_short_user_description(df, column, filename):
         json.dump(new_answers, file, ensure_ascii=False, indent=4)
     return df
 
+def take_scores_from(total_scores_df):
+    return total_scores_df[0]
+
+def count_total_scores(df):
+    for i in range(2, 9, 2):
+        current = df.columns[i]
+        next = df.columns[i + 1]
+        df[next] = df[current].apply(take_scores_from)
+        df[next] = pd.to_numeric(df[next], errors='coerce')
+        df[df.columns[45]] = pd.to_numeric(df[df.columns[45]], errors='coerce')
+        df[df.columns[45]] += df[next]
+    df[df.columns[46]] = 40
+    df[df.columns[47]] = df[df.columns[45]].astype(str) + '/' + df[df.columns[46]].astype(str)
+    return df
+
 def pre_processing_post_experiment(df, filename, path):
     delete_empty_columns(df)
-    df.astype(str).fillna('Нет информации')
     df = fix_data(df)
     for column in df.columns:
         df[column] = df[column].apply(approximate_assessment)
+    df = count_total_scores(df)
+    df.astype(str).fillna('Нет информации')
     if not os.path.exists(f'json/post_experiment/{filename}_columns.json') or os.path.getsize(f'json/post_experiment/{filename}_columns.json') == 0:
         to_make_columns(df, path)
     else:
@@ -69,5 +84,4 @@ def pre_processing_post_experiment(df, filename, path):
                         json.dump(content, file, ensure_ascii=False, indent=4)
                     print(f'[ГОТОВО] Ответ: ячейки с мнениями участников переименованы из {filename}')
     return df
-
 
