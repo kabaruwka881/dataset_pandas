@@ -32,102 +32,101 @@ API документация [https://docs.io.net/](https://docs.io.net/referenc
 
 ## Поля исходных таблиц .xlsx и .csv
 **Файл:** `pre_experiment_state_form.xlsx`:
-- `id` - уникальный идентификатор пользователя  
-- `creation_time` - время создания заявки  
+- `creation_time` - время создания формы  
+- `energy_level` - уровень энергии или усталости  
 - `mood_state` - приподнятость или подавленность  
-- `energy_level` - энергичность или усталость  
 - `anxiety_level` - спокойствие или тревожность  
 - `self_confidence_level` - уверенность в себе или беспомощность  
-- `current_feeling` - ощущения перед экспериментом (эмоциональные и физические)  
+- `id` - уникальный идентификатор участника  
+- `current_feeling` - текущие ощущения (физические и эмоциональные)  
 
 **Файл:** `engagement_emotions_markup.csv`:
-- `video_timestamp` - таймкод эмоции участника в видео  
 - `engagement_level` - степень вовлеченности в игру  
 - `current_emotion` - текущая эмоция участника  
-- `emotional_impact` - сила эмоционального воздействия момента  
-- `situational_control` - уровень контроля над игровой ситуацией  
-- `pleasantness_level` - насколько момент был приятным/неприятным  
 - `feedback_comments` - мысли, эмоции и свободные комментарии участника  
+- `pleasantness_level` - насколько момент был приятным/неприятным  
+- `situational_control` - уровень контроля над игровой ситуацией  
+- `emotional_impact` - сила эмоционального воздействия момента  
+- `video_timestamp` - таймкод эмоции участника в видео  
 
 **Файл:** `game_preferences_form.xlsx`:
-- `id` - уникальный идентификатор пользователя  
-- `creation_time` - время создания заявки  
-- `gender` - пол  
-- `weekly_gaming_hours` - количество часов, проведённых в играх за неделю  
-- `favorite_game_hours` - список наиболее захватывающих игр участника с примерным временем в каждой  
-- `reason_game_position` - причина, по которой игра из предыдущего вопроса оказалась на первом месте  
-- `top_5_games` - топ-5 любимых игр участника  
-- `favorite_games_reason` - за что участник полюбил эти игры  
-- `game_genres_order` - порядок жанров от самого любимого к наименее любимому  
-- `game_mechanics_interest` - интерес к числам и механике в играх  
-- `solo_or_group` - предпочтение играть одному или в группе  
-- `team_work_rate` - насколько нравится работать в команде  
-- `character_setup_time` - время, затраченное на создание персонажа  
-- `armor_style_importance` - важность сочетания стиля доспехов  
-- `character_originality` - важность уникальности внешнего вида персонажа  
-- `exploration_score` - интерес к исследованию мира просто ради исследования  
-- `secret_places_found` - интерес к поиску секретов, NPC и скрытых мест  
+- `weekly_gaming_hours` - количество часов в неделю, проводимых за компьютерными и/или мобильными играми  
+- `favorite_game_hours` - список наиболее часто играемых игр с указанием часов, отсортированных по вовлечённости  
+- `reason_game_position` - причина, по которой самая увлекательная игра заняла первое место  
+- `top_favourite_five_games` - топ-5 любимых игр участника  
+- `favorite_games_reason` - ключевые слова, за что участник полюбил эти игры  
+- `game_genres_order` - упорядоченный список игровых жанров от самого любимого до наименее любимого  
+- `game_mechanics_interest` - интерес к точным числам и процентам в механике игры  
+- `solo_or_group` - предпочтение играть одному или в команде  
+- `team_work_rate` - насколько участнику нравится командная работа  
+- `character_setup_time` - сколько времени тратится на настройку персонажа при создании  
+- `armor_style_importance` - важность сочетания наряда/доспехов по цвету и стилю  
+- `character_originality` - важность уникального внешнего вида персонажа  
+- `exploration_score` - интерес к исследованию игрового мира ради самого исследования  
+- `secret_places_found` - интерес к нахождению скрытых квестов, NPC и локаций  
 - `character_upgrade_speed` - важность быстрой прокачки персонажа  
-- `game_power_importance` - важность становления могущественным  
-- `game_mechanics_importance` - важность знания игровых правил и механик  
+- `game_power_importance` - важность становления могущественным в игре  
+- `game_mechanics_importance` - стремление знать как можно больше о правилах и механике  
 - `immersion_level` - важность погружения в игровой мир  
-- `escape_into_game` - желание уйти из реальности в игру  
+- `escape_into_game` - важность использования игры как способа уйти от реальности  
 - `player_interaction_rate` - насколько нравится знакомиться с другими игроками  
-- `player_chat_rate` - насколько нравится общаться в чате  
-- `location_exploration_rate` - как часто исследуются все локации  
-- `annoying_actions_counter` - насколько часто раздражаются другие игроки действиями участника  
-- `meaningful_conversations` - частота содержательных бесед с игроками  
-- `personal_conversations_frequency` - частота личных разговоров с игровыми друзьями  
-- `friends_help_frequency` - как часто друзья в игре помогают при проблемах в реальной жизни  
-- `character_background_frequency` - как часто участник придумывает бэкграунд персонажу  
-- `role_playing_frequency` - как часто отыгрывается роль персонажа  
-- `escape_from_problems` - игра как способ забыть о проблемах  
+- `player_chat_rate` - насколько нравится болтать в чате с игроками  
+- `location_exploration_rate` - насколько нравится исследовать каждую локацию в игре  
+- `annoying_actions_counter` - склонность к действиям, раздражающим других игроков  
+- `meaningful_conversations` - частота содержательных бесед с другими игроками  
+- `personal_conversations_frequency` - частота обсуждения личного с игровыми друзьями  
+- `friends_help_frequency` - как часто игровые друзья помогают при реальных проблемах  
+- `character_background_frequency` - как часто придумывается история для персонажа  
+- `role_playing_frequency` - как часто участник отыгрывает характер персонажа  
+- `escape_from_problems` - использование игры для отвлечения от проблем  
 - `provocation_frequency` - как часто участник провоцирует других игроков  
+- `creation_time` - время создания формы  
+- `gender` - пол участника  
+- `id` - уникальный идентификатор участника  
 
 **Файл:** `post_experiment_state_form.xlsx`:
-- `id` - уникальный идентификатор пользователя
-- `creation_time` - время создания заявки
-- `anxiety_score` - уровень тревожности 
-- `energy_fatigue_score` - уровень усталости 
-- `mood_state` - общее эмоциональное состояние  
-- `mood_score` - степень приподнятости/подавленности  
-- `self_confidence` - чувство уверенности в себе  
-- `self_confidence_score` - уверенность в себе
-- `attention_level` - внимание к игре  
+- `creation_time` - время создания формы  
+- `anxiety_score` - оценка тревожности (баллы)  
+- `energy_fatigue_score` - оценка усталости (баллы)  
+- `mood_state` - приподнятость или подавленность  
+- `mood_score` - оценка настроения (баллы)  
+- `self_confidence` - уверенность в себе / беспомощность  
+- `self_confidence_score` - оценка уверенности (баллы)  
+- `attention_level` - насколько игра удерживала внимание  
 - `game_focus_level` - сосредоточенность на игре  
-- `game_effort_level` - вложенные усилия  
-- `max_effort_feeling` - ощущение, что стараешься изо всех сил  
+- `game_effort_level` - приложенные усилия  
+- `max_effort_feeling` - ощущение максимальных стараний  
 - `time_loss_level` - потеря ощущения времени  
-- `real_world_awareness` - осознание реальности во время игры  
+- `real_world_awareness` - осознание реального мира во время игры  
 - `daily_stress_relief` - забывание повседневных забот  
-- `presence_awareness` - осознание окружающей обстановки  
-- `event_noticing_level` - замечание внешних событий  
-- `stop_and_watch_around` - желание остановиться и посмотреть по сторонам  
-- `immersion_level` - погружение в игру  
-- `game_detachment_level` - отстранённость от реальности  
-- `emotional_involvement` - личная эмоциональная вовлечённость  
-- `presence_in_game_world` - ощущение, что ты в игровом мире  
-- `self_decision_making` - самостоятельность в решениях в игре  
-- `game_difficulty_level` - субъективная сложность игры  
-- `want_to_quit` - желание сдаться и прекратить игру  
+- `presence_awareness` - осознание присутствия в окружении  
+- `event_noticing_level` - замечание событий вокруг  
+- `stop_and_watch_around` - желание отвлечься и оглядеться  
+- `immersion_level` - уровень погружения в игру  
+- `game_detachment_level` - степень отстранённости от реального мира  
+- `emotional_involvement` - вовлечённость в эмоциональные переживания  
+- `presence_in_game_world` - ощущение присутствия в игровом мире  
+- `self_decision_making` - самостоятельность в принятии игровых решений  
+- `game_difficulty_level` - восприятие сложности игры  
+- `want_to_quit` - желание сдаться во время игры  
 - `game_motivation_level` - мотивация в процессе игры  
-- `game_progress_feeling` - ощущение продвижения в игре  
-- `game_score_result` - самооценка результата  
-- `game_interest_level` - интерес к сюжету  
-- `game_win_motivation` - стремление победить  
-- `game_tension_level` - напряжение из-за неопределённости исхода  
-- `immersion_in_game` - желание взаимодействовать с игрой как с живым  
-- `graphics_rating` - оценка графики  
+- `game_progress_feeling` - ощущение прогресса  
+- `game_score_result` - субъективная оценка результата  
+- `game_interest_level` - интерес к развитию сюжета  
+- `game_win_motivation` - желание победить  
+- `game_tension_level` - напряжение от неопределённости исхода  
+- `immersion_in_game` - желание взаимодействовать с игрой как с живой  
+- `graphics_rating` - оценка графики и визуала  
 - `game_satisfaction_level` - удовольствие от игры  
-- `game_interruption_disappointment` - разочарование от прерывания  
+- `game_interruption_disappointment` - разочарование из-за прерывания  
 - `play_again` - желание сыграть снова  
 - `self_feeling_state` - самочувствие во время эксперимента  
 - `experiment_fatigue_level` - утомление от эксперимента  
-- `user_feedback` - впечатления от игры  
-- `previous_game_experience` - предыдущий опыт с этой игрой  
-- `energy_fatigue` - общее ощущение энергии/усталости  
-- `anxiety_level` - уровень тревожности
+- `user_feedback` - общее впечатление от игры  
+- `previous_game_experience` - опыт до эксперимента с этой игрой  
 - `score_count` - набранные баллы  
-- `total_score` - общее количество баллов  
-- `test_result` - итог теста
-
+- `total_score` - максимально возможное количество баллов  
+- `test_result` - итоговый результат теста  
+- `id` - уникальный идентификатор участника  
+- `energy_fatigue` - энергичность или усталость (до игры)  
+- `anxiety_level` - тревожность (до игры)  
