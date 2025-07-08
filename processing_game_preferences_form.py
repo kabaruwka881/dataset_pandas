@@ -33,8 +33,17 @@ def pre_processing_game_preferences(df, filename, path):
     columns = df.iloc[:, 3:9].columns
     prompts = get_prompt('game_preferences')
     for i, column in enumerate(columns):
+        is_renamed = False
         if not os.path.exists(f'json/game_preferences/{filename}_{column}.json') or os.path.getsize(f'json/game_preferences/{filename}_{column}.json') == 0:
-            df = get_short_user_experience_hours(df, column, prompts[i], filename)
+            dirlist = os.listdir("json/game_preferences")
+            for f in dirlist:
+                if f.startswith(filename):
+                    j = json.load(open(f'json/game_preferences/{f}', 'r', encoding='utf-8-sig'))
+                    if df[column].iloc[0] in j:
+                        os.rename(f'json/game_preferences/{f}', f'json/game_preferences/{filename}_{column}.json')
+                        is_renamed = True
+            if not is_renamed:
+                df = get_short_user_experience_hours(df, column, prompts[i], filename)
         else:
             with open(f'json/game_preferences/{filename}_{column}.json', 'r', encoding='utf-8') as file:
                 content = json.load(file)

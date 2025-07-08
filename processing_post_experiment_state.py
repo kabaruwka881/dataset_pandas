@@ -61,8 +61,17 @@ def pre_processing_post_experiment(df, filename, path):
 
     columns = df.iloc[:, 41:45].columns
     for i, column in enumerate(columns):
+        is_renamed = False
         if not os.path.exists(f'json/post_experiment/{filename}_{column}.json') or os.path.getsize(f'json/post_experiment/{filename}_{column}.json') == 0:
-            df = get_short_user_description(df, column, filename)
+            dirlist = os.listdir("json/post_experiment")
+            for f in dirlist:
+                if f.startswith(filename):
+                    j = json.load(open(f'json/post_experiment/{f}', 'r', encoding='utf-8-sig'))
+                    if df[column].iloc[0] in j:
+                        os.rename(f'json/post_experiment/{f}', f'json/post_experiment/{filename}_{column}.json')
+                        is_renamed = True
+            if not is_renamed:
+                df = get_short_user_description(df, column, filename)
         else:
             with open(f'json/post_experiment/{filename}_{column}.json', 'r', encoding='utf-8') as file:
                 content = json.load(file)
@@ -84,4 +93,3 @@ def pre_processing_post_experiment(df, filename, path):
                         json.dump(content, file, ensure_ascii=False, indent=4)
                     print(f'[ГОТОВО] Ответ: ячейки с мнениями участников переименованы из {filename}')
     return df
-
