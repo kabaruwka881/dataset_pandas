@@ -28,6 +28,8 @@ pip install pandas
 Запуск программы реализован через файл **total_interface.py**. В качестве входных данных используется выбор формата предложенной таблицы,
 а также название файла без надобности ввода формата.
 
+Все ответы основаны на работе API сервиса IO.
+
 API документация [https://docs.io.net/](https://docs.io.net/reference/get-started-with-io-intelligence-api)
 
 ## Поля исходных таблиц .xlsx и .csv
